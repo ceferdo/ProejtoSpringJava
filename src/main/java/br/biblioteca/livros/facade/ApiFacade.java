@@ -27,6 +27,6 @@ public class ApiFacade {
 	public Long salvarAvaliacao(Long idLivro, AvaliacaoDTO avaliacaoDTO) {
 		Livro livro = livrosService.buscaLivro(idLivro);
 		Avaliacao avaliacao = AvaliacaoConverter.toModel(avaliacaoDTO, livro);
-		return 1l;
+		return avaliacaoService.salvaAvaliacao(idLivro, avaliacao);
 	}
 }
