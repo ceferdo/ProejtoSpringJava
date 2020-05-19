@@ -17,5 +17,13 @@ public class AutorService {
 	public List<Autor> listaAutores() {
 		return autorRepository.findAll();
 	}
+	
+	public Autor buscaAutor(Long id) {
+		return autorRepository.findById(id).orElseThrow(() -> new RuntimeException());
+	}
+	
+	public void excluirAutor(Long id) {
+		autorRepository.deleteById(id);
+	}
 
 }
