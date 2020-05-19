@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.biblioteca.livros.conversor.AvaliacaoConverter;
 import br.biblioteca.livros.dto.AvaliacaoDTO;
 import br.biblioteca.livros.model.Avaliacao;
 import br.biblioteca.livros.model.Livro;
@@ -26,6 +27,6 @@ public class ApiFacade {
 	public Long salvarAvaliacao(Long idLivro, AvaliacaoDTO avaliacaoDTO) {
 		Livro livro = livrosService.buscaLivro(idLivro);
 		Avaliacao avaliacao = AvaliacaoConverter.toModel(avaliacaoDTO, livro);
-		return avaliacaoService.salvaAvaliacao(avaliacao);
+		return 1l;
 	}
 }
