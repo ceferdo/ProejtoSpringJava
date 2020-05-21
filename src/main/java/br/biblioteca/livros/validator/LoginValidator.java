@@ -1,4 +1,4 @@
-package br.biblioteca.validator;
+package br.biblioteca.livros.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,8 @@ import br.biblioteca.livros.model.User;
 import br.biblioteca.livros.service.UserService;
 
 @Component
-public class UserValidator implements Validator {
+public class LoginValidator implements Validator {
+	
 	@Autowired
 	private UserService userService;
 
@@ -25,20 +26,10 @@ public class UserValidator implements Validator {
 		User user = (User) o;
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
-		if (user.getUsername().length() < 6 || user.getUsername().length() > 32) {
-			errors.rejectValue("username", "Size.userForm.username");
-		}
-		if (userService.findByUsername(user.getUsername()) != null) {
-			errors.rejectValue("username", "Duplicate.userForm.username");
-		}
-
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-		if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
-			errors.rejectValue("password", "Size.userForm.password");
-		}
-
-		if (!user.getPassword().equals(user.getPassword())) {
-			errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+		
+		if (userService.findByUsername(user.getUsername()) == null) {
+			errors.rejectValue("username", "NotExist.userForm.username");
 		}
 		
 	}

@@ -19,8 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import br.biblioteca.livros.model.User;
 import br.biblioteca.livros.service.SecurityService;
 import br.biblioteca.livros.service.UserService;
-import br.biblioteca.validator.LoginValidator;
-import br.biblioteca.validator.UserValidator;
+import br.biblioteca.livros.validator.LoginValidator;
+import br.biblioteca.livros.validator.UserValidator;
 
 @Controller
 @RequestMapping("/auth")
